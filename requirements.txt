@@ -1,0 +1,11 @@
+flask
+pyngrok
+numpy
+matplotlib
+pandas
+scikit-learn
+pythainlp
+nltk
+gensim
+flask-ngrok
+openpyxl

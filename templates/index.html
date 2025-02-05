@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Sentiment Analysis | วิเคราะห์ความรู้สึกภาษาไทย</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function showLoading() {
+            document.querySelector('.loading').style.display = 'block';
+            document.querySelector('button[type="submit"]').disabled = true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>วิเคราะห์ความรู้สึกภาษาไทย</h1>
+        <form method="POST" onsubmit="showLoading()">
+            <textarea 
+                name="user_text" 
+                placeholder="กรุณากรอกข้อความที่ต้องการวิเคราะห์..." 
+                required
+                minlength="5"
+                maxlength="1000"
+            ></textarea>
+            
+            <div class="loading">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <button type="submit">วิเคราะห์ข้อความ</button>
+        </form>
+        
+        {% if prediction is not none %}
+        <div class="result">
+            <h2>ผลการวิเคราะห์</h2>
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
